@@ -48,7 +48,7 @@ public class Cliente extends JFrame{
             }
 
         }
-        JOptionPane.showMessageDialog(this, "sdsdasdasda");
+        JOptionPane.showMessageDialog(this, "No se pueden registra mas de cinco cuentas por cliente");
     }
 
     public Cuenta[] getArregloCuenta() {
