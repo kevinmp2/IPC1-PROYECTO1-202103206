@@ -76,7 +76,7 @@ public class Servicios extends JFrame implements ActionListener {
                                     double saldoAnterior = Main.ArregloClientes[i].getArregloCuenta()[j].getSaldo();
                                     if(saldoAnterior >= saldo){
                                         Main.ArregloClientes[i].getArregloCuenta()[j].setSaldo(saldoAnterior - saldo);
-                                        JOptionPane.showMessageDialog(this, "pago realizado exitosamente");
+                                        JOptionPane.showMessageDialog(this, "Pago realizado exitosamente");
                                         for (int k = 0; k < Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones().length; k++) {
                                             if(Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] == null ){
                                                 Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] = Main.IdTransacciones;
@@ -92,7 +92,7 @@ public class Servicios extends JFrame implements ActionListener {
                                         }
                                     }
                                     else{
-                                        JOptionPane.showMessageDialog(this, "fondos insuficientes");
+                                        JOptionPane.showMessageDialog(this, "Fondos insuficientes");
                                     }
                                 }
 

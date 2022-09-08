@@ -65,7 +65,7 @@ public class Historial2 extends JFrame implements ActionListener {
                         Cui.setText(Main.ArregloClientes[i].getCUI());
                         nombre.setText(Main.ArregloClientes[i].getNombre());
                         apellido.setText(Main.ArregloClientes[i].getApellido());
-                        String[] ArregloTitulos = {"Id", "Fecha", "Detalle","debito","credito","Saldo disponible"};
+                        String[] ArregloTitulos = {"Id", "Fecha", "Detalle","Debito","Credito","Saldo disponible"};
                         DefaultTableModel dtm = new DefaultTableModel(Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones(), ArregloTitulos);
                         final JTable table = new JTable(dtm);
 

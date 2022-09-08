@@ -66,13 +66,13 @@ public class Deposito2 extends JFrame implements ActionListener {
                                 if(Main.ArregloClientes[i].getArregloCuenta()[j].getIdentificador() == identificador){
                                     double saldoAnterior = Main.ArregloClientes[i].getArregloCuenta()[j].getSaldo();
                                     Main.ArregloClientes[i].getArregloCuenta()[j].setSaldo(saldo + saldoAnterior);
-                                    JOptionPane.showMessageDialog(this, "deposito realizado exitosamente");
+                                    JOptionPane.showMessageDialog(this, "Deposito realizado exitosamente");
                                     for (int k = 0; k < Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones().length; k++) {
                                         if(Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] == null ) {
                                             Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] = Main.IdTransacciones;
                                             Main.IdTransacciones++;
                                             Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][1] = LocalDateTime.now();
-                                            Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][2] = "deposito";
+                                            Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][2] = "Deposito";
                                             Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][3] = 0.0;
                                             Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][4] = saldo;
                                             Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][5] = Main.ArregloClientes[i].getArregloCuenta()[j].getSaldo();
