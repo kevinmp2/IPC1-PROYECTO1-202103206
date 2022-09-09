@@ -1,17 +1,17 @@
 import javax.swing.*;
 
-public class Cliente extends JFrame{
+public class Cliente extends JFrame{// Interfaz para la ventana de los clientes.
     private String CUI;
     private String Nombre;
     private String Apellido;
 
-    private Cuenta[] arregloCuenta;
-    public Cliente(String CUI,String Nombre,String Apellido){
+    private Cuenta[] arregloCuenta;// Arreglo para las cuentas de los clientes.
+    public Cliente(String CUI,String Nombre,String Apellido){// Constructor para el objeto cliente.
 
         this.CUI=CUI;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
-        this.arregloCuenta = new Cuenta[5];
+        this.arregloCuenta = new Cuenta[5];// Arreglo de las cinco cuentas por cada cliente.
 
     }
 
@@ -39,7 +39,7 @@ public class Cliente extends JFrame{
         Apellido = apellido;
     }
 
-    public void agregarCuenta(Cuenta cuenta){
+    public void agregarCuenta(Cuenta cuenta){ // Agrega la cuenta de los clientes.
         for (int i = 0; i < this.arregloCuenta.length; i++) {
             if(this.arregloCuenta[i] == null ){
                 this.arregloCuenta[i] = cuenta;

@@ -2,12 +2,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RegistrarCliente extends JFrame implements ActionListener {
+public class RegistrarCliente extends JFrame implements ActionListener {// Interfaz para la ventana de el registro de clientes.
     public JTextField CUI, Nombre, Apellido;
     public JButton Crear;
      public JLabel CUIL,NombreL,ApellidoL;
 
-    public RegistrarCliente() {
+    public RegistrarCliente() {// Constructor RegistrarClientes
         this.setTitle("Crear Cliente");
         this.setBounds(200, 200, 500, 500);
         this.setLayout(null);
@@ -43,18 +43,18 @@ public class RegistrarCliente extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {// Acciones que realizara la interfaz RegistrarCliente.
         if (e.getSource() == Crear) {
             String cui = CUI.getText();
             String nombre = Nombre.getText();
             String apellido = Apellido.getText();
             Boolean Existe = VerificarClinete(cui);
-            if(Existe == true){
+            if(Existe == true){// Verificara si los CUIS son repetidos
                 JOptionPane.showMessageDialog(this, "Error CUI repetido");
-            }else if(Existe == false){
+            }else if(Existe == false){// Registrar a los clientes.
                 if(Main.ArregloClientes[4]== null){
                     Cliente cliente = new Cliente(cui,nombre,apellido);
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 0; i < 5; i++) {// Creara los clientes.
                         if(Main.ArregloClientes[i] == null){
                             Main.ArregloClientes[i] = cliente;
                             JOptionPane.showMessageDialog(this, "Cliente creado exitosamente");
@@ -72,7 +72,7 @@ public class RegistrarCliente extends JFrame implements ActionListener {
             }
         }
     }
-    public Boolean VerificarClinete(String cui){
+    public Boolean VerificarClinete(String cui){// Verificara los clientes.
         for (int i = 0; i < 5; i++) {
             if(Main.ArregloClientes[i] != null && Main.ArregloClientes[i].getCUI().equals(cui)){
                 return true;

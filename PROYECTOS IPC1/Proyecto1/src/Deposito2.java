@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Deposito2 extends JFrame implements ActionListener {
+public class Deposito2 extends JFrame implements ActionListener {// Interfaz Deposito2
 
     public JTextField Cuenta;
 
@@ -13,7 +13,7 @@ public class Deposito2 extends JFrame implements ActionListener {
 
     public JLabel Monto,Cuental;
 
-    public Deposito2(){
+    public Deposito2(){// Constructor Deposito2
         this.setTitle("Depositar a Cuenta");
         this.setBounds(200,200,600,600);
         this.setLayout(null);
@@ -22,7 +22,7 @@ public class Deposito2 extends JFrame implements ActionListener {
         this.add(Cuental);
         Cuental.setBounds(250,60,100,20);
 
-        CuentaL = new JComboBox();
+        CuentaL = new JComboBox();// llenado del Jcombobox con las diferentes cuentas de los clientes.
         for (int i = 0; i <Main.ArregloClientes.length; i++) {
             if(Main.ArregloClientes[i] != null){
                 for (int j = 0; j < Main.ArregloClientes[i].getArregloCuenta().length; j++) {
@@ -53,21 +53,21 @@ public class Deposito2 extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {// Realiza la accion de los depositos.
         if(e.getSource() == Aceptar){
 
             int identificador = (int) CuentaL.getSelectedItem();
             double saldo = Double.parseDouble(Cuenta.getText());
-            if(saldo > 0){
-                for (int i = 0; i <Main.ArregloClientes.length; i++) {
+            if(saldo > 0){// verificacion del saldo, que sea mayor a cero.
+                for (int i = 0; i <Main.ArregloClientes.length; i++) {// Realiza la accion de los depositos a las diferentes cuentas.
                     if(Main.ArregloClientes[i] != null){
                         for (int j = 0; j < Main.ArregloClientes[i].getArregloCuenta().length; j++) {
                             if(Main.ArregloClientes[i].getArregloCuenta()[j] != null){
                                 if(Main.ArregloClientes[i].getArregloCuenta()[j].getIdentificador() == identificador){
                                     double saldoAnterior = Main.ArregloClientes[i].getArregloCuenta()[j].getSaldo();
-                                    Main.ArregloClientes[i].getArregloCuenta()[j].setSaldo(saldo + saldoAnterior);
+                                    Main.ArregloClientes[i].getArregloCuenta()[j].setSaldo(saldo + saldoAnterior);// Deposito
                                     JOptionPane.showMessageDialog(this, "Deposito realizado exitosamente");
-                                    for (int k = 0; k < Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones().length; k++) {
+                                    for (int k = 0; k < Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones().length; k++) {// Añade la accion al historial.
                                         if(Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] == null ) {
                                             Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] = Main.IdTransacciones;
                                             Main.IdTransacciones++;

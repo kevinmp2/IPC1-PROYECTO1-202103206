@@ -3,7 +3,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VisualizarClientes extends JFrame implements ActionListener {
+public class VisualizarClientes extends JFrame implements ActionListener { // Interfaz VisualizarClientes.
 
     public JTextField CUI;
     public JButton Buscar;
@@ -15,15 +15,15 @@ public class VisualizarClientes extends JFrame implements ActionListener {
         this.setTitle("Ver Clientes");
         this.setBounds(200,200,600,600);
         this.setLayout(null);
-
-        String[] ArregloTitulos = {"CUI", "Nombre", "Apellido"};
+        // Tabla para la visualizacion de los diferentes clientes.
+        String[] ArregloTitulos = {"CUI", "Nombre", "Apellido"};// Agrega los datos de la tabla.
         int x = 0;
-        for (int i = 0; i < Main.ArregloClientes.length; i++) {
+        for (int i = 0; i < Main.ArregloClientes.length; i++) {// Agrega los datos de los clientes a la tabla.
             if(Main.ArregloClientes[i] != null){
                 x++;
             }
         }
-        Object[][] ArregloTablas = new Object[x][3];
+        Object[][] ArregloTablas = new Object[x][3];// Creacion de la tabla con todos los datos ya en ella.
         for (int i = 0; i < Main.ArregloClientes.length; i++) {
             if(Main.ArregloClientes[i] != null){
                 ArregloTablas[i][0] = Main.ArregloClientes[i].getCUI();
@@ -47,7 +47,7 @@ public class VisualizarClientes extends JFrame implements ActionListener {
         this.add(CUI);
         CUI.setBounds(25,250,300,25);
 
-        CuentasAsociadas = new JComboBox();
+        CuentasAsociadas = new JComboBox();// JCombobox para las cunetas asociadas.
         this.add(CuentasAsociadas);
         CuentasAsociadas.setBounds(100,450,300,25);
 
@@ -60,10 +60,10 @@ public class VisualizarClientes extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == Buscar) {
+        if(e.getSource() == Buscar) { // realizar la accion de buscar las cuentas asociadas de cada cuenta.
             CuentasAsociadas.removeAllItems();
-        String cui = CUI.getText();
-            for (int i = 0; i < Main.ArregloClientes.length; i++) {
+        String cui = CUI.getText();// CUI de los clientes
+            for (int i = 0; i < Main.ArregloClientes.length; i++) {// Realiza la verificacion de los clientes y los agrega al jcombobox de las cuentas asociodas
                 if(Main.ArregloClientes[i] != null && cui .equals(Main.ArregloClientes[i].getCUI())){
                     for (int j = 0; j < Main.ArregloClientes[i].getArregloCuenta().length; j++) {
                         if(Main.ArregloClientes[i].getArregloCuenta()[j] != null){

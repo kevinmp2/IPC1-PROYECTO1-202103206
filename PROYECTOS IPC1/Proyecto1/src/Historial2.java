@@ -3,7 +3,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Historial2 extends JFrame implements ActionListener {
+public class Historial2 extends JFrame implements ActionListener {// Interfaz Historial2
 
     public JLabel IdCuenta,CUI,Nombre,Apellido;
 
@@ -11,7 +11,7 @@ public class Historial2 extends JFrame implements ActionListener {
 
     public JButton Mostrar;
 
-    public Historial2(){
+    public Historial2(){// Constructor Historial2.
         this.setTitle("Historial de transacciones");
         this.setBounds(200,200,900,500);
         this.setLayout(null);
@@ -57,17 +57,17 @@ public class Historial2 extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int Idcuenta = Integer.parseInt(Id.getText());
+        int Idcuenta = Integer.parseInt(Id.getText());// añade el id de cada cuenta.
         for (int i = 0; i <Main.ArregloClientes.length; i++) {
-            if(Main.ArregloClientes[i] != null){
+            if(Main.ArregloClientes[i] != null){// verifica si el espacio esta vacio.
                 for (int j = 0; j < Main.ArregloClientes[i].getArregloCuenta().length; j++) {
                     if(Main.ArregloClientes[i].getArregloCuenta()[j] != null && Main.ArregloClientes[i].getArregloCuenta()[j].getIdentificador() == Idcuenta){
                         Cui.setText(Main.ArregloClientes[i].getCUI());
                         nombre.setText(Main.ArregloClientes[i].getNombre());
                         apellido.setText(Main.ArregloClientes[i].getApellido());
-                        String[] ArregloTitulos = {"Id", "Fecha", "Detalle","Debito","Credito","Saldo disponible"};
-                        DefaultTableModel dtm = new DefaultTableModel(Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones(), ArregloTitulos);
-                        final JTable table = new JTable(dtm);
+                        String[] ArregloTitulos = {"Id", "Fecha", "Detalle","Debito","Credito","Saldo disponible"};// identificaciones de la columnas del historial.
+                        DefaultTableModel dtm = new DefaultTableModel(Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones(), ArregloTitulos);// Muestra la tabla con los datos de las cuentas
+                        final JTable table = new JTable(dtm);                                                                                            // y las acciones realizadas.
 
                         JScrollPane scrollPane = new JScrollPane(table);
 

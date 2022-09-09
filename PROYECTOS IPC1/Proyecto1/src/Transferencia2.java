@@ -3,14 +3,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.Date;
-public class Transferencia2 extends JFrame implements ActionListener {
+public class Transferencia2 extends JFrame implements ActionListener {// Interfaz Transderencia2
     public JLabel CuentaOrigenL, CuentaDestinoL,MontoL;
     public JComboBox CuentaOrigen, CuentaDestino;
 
     public JTextField Monto;
 
     public JButton Aceptar;
-    public Transferencia2(){
+    public Transferencia2(){// Construcctor Transfernecia2
         this.setTitle("Transferencia entre cuentas");
         this.setBounds(200,200,600,600);
         this.setLayout(null);
@@ -19,7 +19,7 @@ public class Transferencia2 extends JFrame implements ActionListener {
         this.add(CuentaOrigenL);
         CuentaOrigenL.setBounds(230,100,100,20);
 
-        CuentaOrigen = new JComboBox();
+        CuentaOrigen = new JComboBox();// llenado del Jcombobox con las diferentes cuentas de los clientes.
         for (int i = 0; i <Main.ArregloClientes.length; i++) {
             if(Main.ArregloClientes[i] != null){
                 for (int j = 0; j < Main.ArregloClientes[i].getArregloCuenta().length; j++) {
@@ -40,7 +40,7 @@ public class Transferencia2 extends JFrame implements ActionListener {
 
         CuentaDestino = new JComboBox<>();
 
-        for (int i = 0; i <Main.ArregloClientes.length; i++) {
+        for (int i = 0; i <Main.ArregloClientes.length; i++) {// Llenado del Jcombobox con las diferentes cuentas de los diferentes clientes.
             if(Main.ArregloClientes[i] != null){
                 for (int j = 0; j < Main.ArregloClientes[i].getArregloCuenta().length; j++) {
                     if(Main.ArregloClientes[i].getArregloCuenta()[j] != null){
@@ -69,14 +69,14 @@ public class Transferencia2 extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == Aceptar){
+        if(e.getSource() == Aceptar){// Realiza la accion de las traferencias.
             int origen= (int) CuentaOrigen.getSelectedItem();
             int destino = (int) CuentaDestino.getSelectedItem();
 
             boolean estado = false;
 
             double monto = Double.parseDouble(Monto.getText());
-            if(monto > 0){
+            if(monto > 0){// verifica que el saldo sea mayor a cero.
                 for (int i = 0; i <Main.ArregloClientes.length; i++) {
                     if(Main.ArregloClientes[i] != null){
                         for (int j = 0; j < Main.ArregloClientes[i].getArregloCuenta().length; j++) {
@@ -85,9 +85,9 @@ public class Transferencia2 extends JFrame implements ActionListener {
                                 if(Main.ArregloClientes[i].getArregloCuenta()[j].getIdentificador() == origen){
                                     double saldoAnterior = Main.ArregloClientes[i].getArregloCuenta()[j].getSaldo();
                                     if(monto <= saldoAnterior ){
-                                        Main.ArregloClientes[i].getArregloCuenta()[j].setSaldo(saldoAnterior - monto);
+                                        Main.ArregloClientes[i].getArregloCuenta()[j].setSaldo(saldoAnterior - monto);// Realiza la transferencia de una cuenta a otra.
                                         estado = true;
-                                        for (int k = 0; k < Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones().length; k++) {
+                                        for (int k = 0; k < Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones().length; k++) {// Añade los datos o acciones realizadas al historial.
                                             if(Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] == null ){
                                                 Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] = Main.IdTransacciones;
                                                 Main.IdTransacciones++;
@@ -113,7 +113,7 @@ public class Transferencia2 extends JFrame implements ActionListener {
 
                 }
                 if(estado == true){
-                    for (int i = 0; i <Main.ArregloClientes.length; i++) {
+                    for (int i = 0; i <Main.ArregloClientes.length; i++) {// Verifica la transaccion de la cuenta destino.
                         if(Main.ArregloClientes[i] != null){
                             for (int  j = 0; j < Main.ArregloClientes[i].getArregloCuenta().length; j++) {
                                 if(Main.ArregloClientes[i].getArregloCuenta()[j] != null){
@@ -121,7 +121,7 @@ public class Transferencia2 extends JFrame implements ActionListener {
                                         double saldoAnterior = Main.ArregloClientes[i].getArregloCuenta()[j].getSaldo();
                                         Main.ArregloClientes[i].getArregloCuenta()[j].setSaldo(monto + saldoAnterior);
                                         JOptionPane.showMessageDialog(this, "Transferencia realizado exitosamente");
-                                        for (int k = 0; k < Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones().length; k++) {
+                                        for (int k = 0; k < Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones().length; k++) {// Añade los datos al historial
                                             if(Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] == null ){
                                                 Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] = Main.IdTransacciones;
                                                 Main.IdTransacciones++;

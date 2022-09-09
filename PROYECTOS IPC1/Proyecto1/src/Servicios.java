@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Servicios extends JFrame implements ActionListener {
+public class Servicios extends JFrame implements ActionListener {// Interfaz Servicios.
 
     public JLabel CuentaDebitar,TipoDeServicio,MontoS;
 
@@ -14,7 +14,7 @@ public class Servicios extends JFrame implements ActionListener {
 
     public JButton Aceptar;
 
-    public Servicios(){
+    public Servicios(){// Constructor Servicios
         this.setTitle("Pago de servicios");
         this.setBounds(200,200,600,600);
         this.setLayout(null);
@@ -23,9 +23,9 @@ public class Servicios extends JFrame implements ActionListener {
         this.add(CuentaDebitar);
         CuentaDebitar.setBounds(230,100,100,20);
 
-        Debitar = new JComboBox();
+        Debitar = new JComboBox();// Jcombobox llenado con los clientes.
         for (int i = 0; i <Main.ArregloClientes.length; i++) {
-            if(Main.ArregloClientes[i] != null){
+            if(Main.ArregloClientes[i] != null){// verifica si el espacio del arreglo esta vacio para poder agregar algun cliente
                 for (int j = 0; j < Main.ArregloClientes[i].getArregloCuenta().length; j++) {
                     if(Main.ArregloClientes[i].getArregloCuenta()[j] != null){
                         Debitar.addItem(Main.ArregloClientes[i].getArregloCuenta()[j].getIdentificador());
@@ -41,7 +41,7 @@ public class Servicios extends JFrame implements ActionListener {
         TipoDeServicio.setBounds(230,200,100,20);
 
         TipoServicio = new JComboBox();
-        TipoServicio.addItem("Luz electrica");
+        TipoServicio.addItem("Luz electrica");// Llenado del Jcombobox con los diferencias servicios.
         TipoServicio.addItem("Agua");
         TipoServicio.addItem("Servicio telefonico");
         this.add(TipoServicio);
@@ -62,13 +62,13 @@ public class Servicios extends JFrame implements ActionListener {
 
     }
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {// Realizar la accion de los pagos de los diferentes servicios.
         if(e.getSource() == Aceptar){
 
-            int identificador = (int) Debitar.getSelectedItem();
-            double saldo = Double.parseDouble(Monto.getText());
+            int identificador = (int) Debitar.getSelectedItem();// Identificador de la cuenta de los clientes.
+            double saldo = Double.parseDouble(Monto.getText());// Saldo de la cuenta
             if(saldo > 0){
-                for (int i = 0; i <Main.ArregloClientes.length; i++) {
+                for (int i = 0; i <Main.ArregloClientes.length; i++) {// Realiza la accion de los pagos de cada cuenta.
                     if(Main.ArregloClientes[i] != null){
                         for (int j = 0; j < Main.ArregloClientes[i].getArregloCuenta().length; j++) {
                             if(Main.ArregloClientes[i].getArregloCuenta()[j] != null){
@@ -77,7 +77,7 @@ public class Servicios extends JFrame implements ActionListener {
                                     if(saldoAnterior >= saldo){
                                         Main.ArregloClientes[i].getArregloCuenta()[j].setSaldo(saldoAnterior - saldo);
                                         JOptionPane.showMessageDialog(this, "Pago realizado exitosamente");
-                                        for (int k = 0; k < Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones().length; k++) {
+                                        for (int k = 0; k < Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones().length; k++) {// Agrega los resultados a la tabla historial
                                             if(Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] == null ){
                                                 Main.ArregloClientes[i].getArregloCuenta()[j].getTransacciones()[k][0] = Main.IdTransacciones;
                                                 Main.IdTransacciones++;
